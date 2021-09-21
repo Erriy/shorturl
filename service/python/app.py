@@ -2,7 +2,6 @@
 # -*- coding=utf-8 -*-
 from flask import Flask, request, abort, redirect
 from pymongo import ReturnDocument
-
 from db import db
 import id as shortid
 
@@ -13,7 +12,7 @@ def route_create():
     link = str(request.args.get('link', ''))
     # todo 检查link是否合规
     if len(link) == 0:
-        abort(400, '为指定link参数，拒绝执行')
+        abort(400, '未指定link参数，拒绝执行')
 
     _id = shortid.get()
 
