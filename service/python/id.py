@@ -14,12 +14,9 @@ digit62 = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
 
 def int_to_str62(x):
     s = ''
-    while x>62:
-        x1= x % 62
-        s = digit62[x1]+s
+    while x>0:
+        s = digit62[x % 62]+s
         x = int(x/62)
-    if x>0:
-        s = digit62[x]+s
     return s
 
 def str62_to_int(s):
