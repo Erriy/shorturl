@@ -39,8 +39,17 @@ services:
             - MONGO_HOST=mongo
             - MONGO_PASSWORD=scenic-lob-walker-anima-sauld-bikini-repile
             - REDIS_HOST=redis
-        ports:
-            - 82:80
+        # ports:
+        #     - 83-100:80
         depends_on:
             - mongo
             - redis
+
+    nginx.node:
+        image: nginx:1.21.3-alpine
+        volumes:
+            - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf
+        ports:
+            - 82:80
+        depends_on:
+            - service.node
