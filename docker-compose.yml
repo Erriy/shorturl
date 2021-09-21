@@ -21,10 +21,26 @@ services:
         build:
             dockerfile: dockerfile
             context: service/python/
-
         environment:
             - MONGO_HOST=mongo
             - MONGO_PASSWORD=scenic-lob-walker-anima-sauld-bikini-repile
             - REDIS_HOST=redis
         ports:
-            - 80:80
+            - 81:80
+        depends_on:
+            - mongo
+            - redis
+
+    service.node:
+        build:
+            dockerfile: dockerfile
+            context: service/node/
+        environment:
+            - MONGO_HOST=mongo
+            - MONGO_PASSWORD=scenic-lob-walker-anima-sauld-bikini-repile
+            - REDIS_HOST=redis
+        ports:
+            - 82:80
+        depends_on:
+            - mongo
+            - redis
